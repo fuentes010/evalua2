@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+      {% if title %}
+        {{title}}
+      {% else %}
+        Evalua2 - Pablo Fuentes
+      {% endif %}
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/vendor/normalize.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/vendor/materialize.min.css') }}" media="screen,projection">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/vendor/boilerplate.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3.min.js') }}"></script>
+</head>
+<body>
+  <div id="header" class="teal darken-3">
+      <div class="container">
+        <div class="right">
+          <img id="logoUPV" src="{{ url_for('static', filename='img/logoUPV.png') }}"/>
+        </div>
+        <div>
+          <h1>Evalua2</h1>
+          <h6>Pablo Fuentes Rodríguez</h6>
+        </div>
+      </div>
+  </div>
+    {% block content %}
+    {% endblock %}
+</body>
+<footer>
+  {% block footer %}
+  {% endblock %}
+
+  <!--IMPORT ALL JS AT FOOTER IS THE BEST WAY-->
+  <script src="{{ url_for('static', filename='js/vendor/jquery-1.11.2.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/materialize.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/jquery.tablesorter.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/jquery.twbsPagination.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</footer>
+</html>
