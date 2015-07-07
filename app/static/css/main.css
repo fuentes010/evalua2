@@ -14,8 +14,14 @@ html,body {
 #logoUPV{
   max-height: 100px;
 }
+/* INDEX */
 
-/* BODY */
+#results-div{
+  margin-top: 30px;
+}
+
+
+/* BODY BLOOM*/
 
 #filter-div{
 
@@ -67,4 +73,9 @@ html,body {
   cursor: pointer;
   border-radius: 5px;
   padding: 2px 5px 2px 5px;
+}
+
+#graph-div{
+  text-align: center;
+  margin-top: 50px;
 }

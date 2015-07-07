@@ -2,8 +2,34 @@
 {% set title ='Evalua2 - Pablo Fuentes' %}
 {% block content %}
 
-Hola mundo
+<div id="results-div" class="container">
+  <div  class="row">
+    <div id="graph-bloom" class="col s6 center-align">
+      <div>
+        <h5>Bloom</h5>
+      </div>
+      <div>
+        <canvas id="chart-area" height="400"/>
+      </div>
+      <div>
+        <a class="waves-effect waves-light btn teal darken-3" href="/bloom"><i class="mdi-action-search left"></i>Ver resultados</a>
+      </div>
+    </div>
+    <div id="graph-bloom-rev" class="col s6 center-align">
+        <div>
+          <h5>Bloom revisado</h5>
+        </div>
+        <div>
+          <canvas id="chart-area-2" height="400"/>
+        </div>
+        <div>
+          <a class="waves-effect waves-light btn teal darken-3" href="/bloom_revisado"><i class="mdi-action-search left"></i>Ver resultados</a>
+        </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
 {% block footer %}
-Pruebas footer
+
 {% endblock %}

@@ -2,7 +2,40 @@ $(document).ready(function(){
 
     //$("#results-table").tablesorter();
     paginate_table();
+    var ctx = document.getElementById("chart-area").getContext("2d");
+    var ctx2 = document.getElementById("chart-area-2").getContext("2d");
 
+    $.ajax({
+            url: '/get_bloom_stats',
+            contentType: "application/json; charset=utf-8",
+            type: 'POST',
+            data: "bloom",
+            success: function(response) {
+                console.log(response);
+                new Chart(ctx).Doughnut(response['values'], {animateScale: true});
+            },
+            error: function(error) {
+                console.log(error);
+            }
+    });
+
+    $.ajax({
+            url: '/get_bloom_stats',
+            contentType: "application/json; charset=utf-8",
+            type: 'POST',
+            data: "bloom_revisado",
+            success: function(response) {
+                console.log(response);
+                new Chart(ctx2).Doughnut(response['values'], {animateScale: true});
+            },
+            error: function(error) {
+                console.log(error);
+            }
+    });
+
+
+
+    //new Chart(ctx2).Doughnut(data, {animateScale: true});
 
 });
 

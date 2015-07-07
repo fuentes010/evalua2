@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% set title ='Evalua2 - Pablo Fuentes' %}
+{% block content %}
+
+<div>
+  <div id="filter-div">
+    <div id="pager-div" class="right">
+      <ul class="pagination">
+      </ul>
+    </div>
+  </div>
+  <div id="results-table-div">
+    <table id="results-table" class="tablesorter bordered hoverable z-depth-1">
+      <thead class="teal darken-3">
+        <tr>
+          <th class="header">Resultado aprendizaje</th>
+          {% for category in categories_bloom %}
+
+          <th>{{ category.name }}</th>
+
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+          {% for values in ra_values %}
+          <tr class='tr-row'>
+            <th class='cell'>{{ values[0]|safe }}</th>
+            {% for res in values[1] %}
+            <th class='cell right-align'>{{ res[1]['qty'] }}</th>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+{% endblock %}
+{% block footer %}
+
+{% endblock %}
