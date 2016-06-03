@@ -1,0 +1,14 @@
+- Añadir una tabla de Actos de evaluación.
+- Inventar relación los actos de evaluación con los resultados de aprendizaje.
+- Relacionar los actos de evaluación con las categorias de la taxonomia de bloom.
+- Añadir tabla con asignaturas de Ingenieria informatica.
+- Inventar relación entre resultados de aprendizaje y asignaturas.
+
+- Mejorar la interfaz con un usuario y contraseña.
+- Elegir la asignatura a analizar.
+- Poder subir un json o xml parsear y analizar.
+- Poder descargar un json y un xml demo.
+- Intentar hacer matching con verbos regurales conjugados (No necesario).
+- Intentar hacer matching con verbos irregurales conjugados (No necesario).
+
+www.coocking-hacks.com
