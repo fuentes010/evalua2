@@ -1,0 +1,31 @@
+<div flex layout="row" layout-align="center center">
+    <div flex-gt-xs="100" flex-gt-lg="80">
+        <div layout="column">
+            <div ui-view>
+            <md-content class="md-padding">
+                <md-card>
+                    <md-tabs class="md-primary" md-selected="0" md-center-tabs md-dynamic-height>
+                        <md-tab ng-repeat="curso in cursos" label="{{curso}}">
+                            <md-content class="md-padding">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Filtrar...</label>
+                                    <input ng-model="query">
+                                </md-input-container>
+                                <ul class="list-asignaturas">
+                                    <li class="list-asignaturas-item" ng-repeat="asignatura in asignaturas[$index] | filter:query">
+                                        <a ui-sref="resultados-apredizaje.asignatura({asigId: asignatura.id})">
+                                        {{asignatura.name}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                    <md-card-content>
+                    </md-card-content>
+                </md-card>
+            </md-content>
+            </div>
+        </div>
+    </div>
+</div>

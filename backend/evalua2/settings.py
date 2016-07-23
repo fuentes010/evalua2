@@ -47,21 +47,32 @@ LOCAL_APPS = [
 ]
 
 THIRD_APPS = [
-    'rest_framework'
+    'corsheaders',
+    'rest_framework',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_APPS
 
-MIDDLEWARE_CLASSES = [
+DJANGO_MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+LOCAL_MIDDLEWARE_CLASSES = [
+]
+
+THIRD_MIDDLEWARE_CLASSES = [
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+MIDDLEWARE_CLASSES = DJANGO_MIDDLEWARE_CLASSES + LOCAL_MIDDLEWARE_CLASSES + THIRD_MIDDLEWARE_CLASSES
+
 
 ROOT_URLCONF = 'evalua2.urls'
 
@@ -132,3 +143,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#CORS CONFIG -> Para peticiones RESTFUL JSON
+CORS_URLS_REGEX = r'^/api/v1/.*$'
+# CORS_ORIGIN_REGEX_WHITELIST = ('localhost', '127.0.0.1:3000')
+CORS_ORIGIN_ALLOW_ALL = True
+
+APPEND_SLASH = True

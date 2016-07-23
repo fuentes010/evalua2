@@ -1,0 +1,69 @@
+<div flex layout="row" layout-align="center center">
+    <div flex-gt-xs="100" flex-gt-lg="80">
+        <div layout="column">
+            <md-content class="md-padding">
+                <md-card>
+                        <md-toolbar>
+                            <md-card-header class="md-primary" flex layout="column" layout-align="center center">
+                                Analizar resultados de aprendizaje
+                            </md-card-header>
+                        </md-toolbar>
+                        <md-card-content>
+                            <div ng-show="analysis.length > 0">
+                                <div layout="column">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Filtrar...</label>
+                                        <input ng-model="query">
+                                    </md-input-container>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Resultado de aprendizaje</th>
+                                                <td align="right" ng-repeat="(category_name,category_value) in analysis[0].analysis.categs">
+                                                    {{category_name}}
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                    <tbody>
+                                        <tr ng-repeat="ra in analysis | filter:query">
+                                            <td class="table-index">{{$index+1}}</td>
+                                            <td>
+                                                <span ng-repeat="token in ra['analysis']['phrase']">
+
+                                                    {{token[0]}}
+                                                    <md-tooltip md-direction="top" ng-show="token.length > 1">
+                                                        {{ token.slice(1,token.length).join(', ') }}
+                                                    </md-tooltip>
+                                                </span>
+                                            </td>
+                                            <td align="right" ng-repeat="category in ra.analysis.categs">
+                                                {{category}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                    <div layout="column" layout-align="center end">
+                                        <div id="upload-other-div">
+                                            <md-button class="md-raised md-primary" ng-click="uploadFile()">
+                                                <i class="fa fa-cloud-upload" aria-hidden="true"></i> Cargar otro fichero JSON
+                                            </md-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="analysis.length == 0">
+                                <div id="upload-div" layout="column" layout-align="center center">
+                                    <input id="upload-file" type='file' style="display:none;"
+                                                   onchange="angular.element(this).scope().fileUploaded(this)">
+                                    <md-button class="md-raised md-primary" ng-click="uploadFile()">
+                                        <h4><i class="fa fa-cloud-upload fa-2x" aria-hidden="true"></i> Cargar fichero JSON</h4>
+                                    </md-button>
+                                </div>
+                            </div>
+                        </md-card-content>
+                </md-card>
+            </md-content>
+        </div>
+    </div>
+</div>

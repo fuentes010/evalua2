@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from core.models import ResultadoAprendizaje
 from restapi.models import ResultadoAprendizajeSerializer
+from restapi.views import analyze_ra
 
 
 @api_view(['GET'])
@@ -25,3 +26,17 @@ def resultado_aprendizaje(request, pk):
     if request.method == 'GET':
         serializer = ResultadoAprendizajeSerializer(categoria)
         return Response(serializer.data)
+
+
+@api_view(['POST'])
+def analizar_resultado_aprendizaje(request):
+    import sys
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+    if request.method == 'POST':
+        res = []
+        for ra in request.data:
+            res.append({'name': ra,
+                        'analysis': analyze_ra(ra['name'])})
+
+        return Response(sorted(res, key=lambda k: k['name']))

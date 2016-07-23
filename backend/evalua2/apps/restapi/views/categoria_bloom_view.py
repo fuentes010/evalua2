@@ -12,7 +12,12 @@ def categorias_bloom_list(request):
     if request.method == 'GET':
         categorias = CategoriaBloom.objects.all()
         serializer = CategoriaBloomSerializer(categorias, many=True)
-        return Response(serializer.data)
+        data = []
+        for c in sorted(serializer.data, key=lambda k: k['seq']):
+            serializer_vals = CategoriaBloomValorSerializer(CategoriaBloomValor.objects.filter(categ_id=c['id']), many=True)
+            c['values'] = serializer_vals.data
+            data.append(c)
+        return Response(data)
 
 
 @api_view(['GET'])
